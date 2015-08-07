@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>首页</title>
+    <meta name="keywords" content="bingblue、冰蓝、冰蓝科技、群官网、nodejs">
+    <meta name="description" content="冰蓝科技 - 中国最炫、最潮流的科技网站，我们追寻最前沿的技术、展现最炫酷的效果，让你感受科技无可抵挡的魅力！">
+    <meta name="author" contect="小牧COOL">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes"> 
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link rel="shortcut icon" href="favicon.ico"/>
+    <style type="text/css">
+      .box{
+        width: 500px;
+        height: 400px;
+        border: 1px solid red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box"></div>
+  </body>
+  <script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+  <script src="js/jquery.mutouch.js"></script>
+  <script type="text/javascript">
+  $(function(){
+    $(".box").mutouch({
+      //banRight :true,
+      offsetX : 50,
+      offsetY : 50
+    });
+  });
+  </script>
+</html>
