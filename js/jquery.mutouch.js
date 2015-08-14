@@ -38,8 +38,9 @@
       init.typeTD = "none";
       init.longTag = 0;
       longTagTime = setInterval(function(){
+        console.log(init.longTag);
         ++init.longTag;
-      },1);
+      },50);
       e.stopPropagation();
       e.preventDefault();
     }, false);
@@ -80,7 +81,7 @@
         opts.toDown(init);
       }
       clearInterval(longTagTime);
-      if(init.longTag > 200){
+      if(init.longTag > (750/50)){
         opts.onLongTag(init);
       }else{
         if(init.tagNum != -1){
