@@ -28,6 +28,17 @@
   <script src="js/jquery.mutouch.js"></script>
   <script type="text/javascript">
   $(function(){
+
+    // alert("ontouchend" in document);
+    // $(".box").on("touchstart mousedown",function(e) {
+    //   event.preventDefault();
+    //   var touchEvent = "ontouchend" in document?event.touches[0] : event;
+    //   var i1 = event;
+    //   var i2 = e;
+    //   console.log(touchEvent.pageX)
+    //   // console.log(i2.originalEvent.touches[0].pageX)
+    //   // console.log(event.targetTouches[0].pageX)
+    // });
     $(".box").mutouch({
       //banRight :true,
       offsetX : 50,
