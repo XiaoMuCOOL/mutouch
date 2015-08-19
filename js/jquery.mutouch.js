@@ -1,73 +1,4 @@
 (function($){
-  // window.Mutouch = {
-  //   vision : "0.2",
-  //   _setInit : function(touchEvent){
-  //     init.sx = touchEvent.pageX;
-  //     init.sy = touchEvent.pageY;
-  //     init.ex = init.sx;
-  //     init.ey = init.sy;
-  //     init.typeLR = "none";
-  //     init.typeTD = "none";
-  //     init.longTag = 0;
-  //   },
-  //   _start : function(touchEvent){
-  //     this._setInit(touchEvent);
-  //     longTagTime = setInterval(function(){
-  //       console.log(init.longTag);
-  //       ++init.longTag;
-  //     },50);
-  //   },
-  //   _move : function(touchEvent){
-  //     init.ex = touchEvent.pageX;
-  //     init.ey = touchEvent.pageY;
-  //     var changeX = (init.ex-init.sx);
-  //     var changeY = (init.sy-init.ey);
-  //     console.log(changeX)
-  //     if(changeX < (opts.offsetX*-1)){
-  //       init.typeLR = "left";
-  //     }
-  //     if (changeX > opts.offsetX){
-  //       init.typeLR = "right";
-  //     };
-  //     if (changeY < (opts.offsetY*-1)){
-  //       init.typeTD = "down";
-  //     };
-  //     if (changeY > opts.offsetY){
-  //       init.typeTD = "top";
-  //     };
-  //     init.tagNum = -1;
-  //     init.longTag = 0;
-  //   },
-  //   _end : function(touchEvent){
-  //     if(init.typeLR == "left"){
-  //       opts.toLeft(init);
-  //     }
-  //     if(init.typeLR == "right"){
-  //       opts.toRight(init);
-  //     }
-  //     if(init.typeTD == "top"){
-  //       opts.toTop(init);
-  //     }
-  //     if(init.typeTD == "down"){
-  //       opts.toDown(init);
-  //     }
-  //     clearInterval(longTagTime);
-  //     if(init.longTag > (750/50)){
-  //       opts.onLongTag(init);
-  //     }else{
-  //       if(init.tagNum != -1){
-  //         clearTimeout(tagTime);
-  //         init.tagNum++;
-  //         tagTime = setTimeout(function(){
-  //           opts.onTag(init);
-  //           init.tagNum = 0;
-  //         },750);
-  //       }else{
-  //         init.tagNum = 0;
-  //       }
-  //     }
-  //   }
-  // }
   $.fn.mutouch = function(options){
     var defaults = {    
       offsetX : 0,
@@ -90,6 +21,17 @@
       },
       onLongTag : function(init){
         console.log("longTag" + init.longTag);
+      },
+      onStart : function(init,event){
+        console.log("onStart");
+        console.log(event);
+      },
+      onMove : function(init,event){
+        console.log("onMove" + event);
+      },
+      onEnd : function(init,event){
+        console.log("onEnd");
+        console.log(event);
       }
     };
     var $this = $(this);
@@ -170,13 +112,16 @@
     }
     $this.on("touchstart mousedown",function(event){
       _start(_init(event));
+      opts.onStart(init,event);
 
       $this.on("touchmove mousemove",function(event){
         _move(_init(event));
+        opts.onMove(init,event);
       });
     });
     $this.on("touchend mouseup",function(event){
       $this.off("touchmove mousemove");
+      opts.onEnd(init,event);
       _end(_init(event));
     });
     
