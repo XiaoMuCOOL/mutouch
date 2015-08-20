@@ -41,8 +41,8 @@
     var longTagTime = null;
     var obj = $this[0];
     function _init (Event) {
-      event.stopPropagation();
-      event.preventDefault();
+      Event.stopPropagation();  
+      Event.preventDefault();
       var touchEvent = "ontouchend" in document?Event.originalEvent.touches[0]: Event;
       return touchEvent;
     }
