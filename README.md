@@ -22,6 +22,7 @@ MuTouch,简化触摸和鼠标事件,基于JQuery,实现手势操作。
 ##Usage
 ###How to Use?
 **mutouch.js**基于JQuery,在其之前引用JQuery,HTML代码如:
+
 ``html
 <script src="dist/jquery.js" type="text/javascript"></script>
 <!-- 开发版本 -->
@@ -31,10 +32,13 @@ MuTouch,简化触摸和鼠标事件,基于JQuery,实现手势操作。
 ``
 
 你必须为你的HTML标签元素设置一个`id`或`class`,如:
+
 ``html
 <div id="box"></div>
 ``
+
 然后js代码如下:
+
 ``js
 $("#box").mutouch({
   offsetY : 50, //上下滑动超过50px才触发事件
@@ -44,11 +48,14 @@ $("#box").mutouch({
   }
 });
 ``
+
 That's it!就是如此简单O(∩_∩)O~
 
 ##Options
 ###Arguments
+
 **mutouch.js**只有三个参数:
+
 key | default | description
 ----|---------|------------
 `banRight` | false | 是否禁用右键,手机端是否禁用长按选中 
@@ -56,7 +63,9 @@ key | default | description
 `offsetY` | 0 | 上下滑动偏移量
 
 ###Events
+
 **mutouch.js**有九个事件:
+
 event | arguments | notes
 ------|-----------|------------
 `onSwipeTop` | `"typeLR"` | 上滑事件(从下往上滑动)
@@ -71,7 +80,9 @@ event | arguments | notes
 
 ###Tips
 ####如何判断往右下滑动？
+
 `onSwipeRight` 方法提供了一个参数 `typeTD` ,可以判断往右滑动时是网上还是往下,代码如下: 
+
 ``js
 $("#box").mutouch({
   onSwipeRight : function(typeTD){
@@ -90,10 +101,13 @@ $("#box").mutouch({
   }
 });
 ``
+
 **其他同理,`typeLR`只可能为`"left"`,`"right"`,`"none"`.
 
 ####如何判断 双击及更多轻触事件？
+
 `onTap` 方法提供了一个参数 `tapNum` ,可以获取到轻触次数,代码如下: 
+
 ``js
 $("#box").mutouch({
   onTap : function(tapNum){
@@ -113,7 +127,9 @@ $("#box").mutouch({
 });
 ``
 ####如何设置 长按事件触发时间？
+
 `onLongTap` 默认是750毫秒触发,但方法提供了一个参数 `longTapTime` ,长按50毫秒为1 `longTapTime`,so,可以如此设置: 
+
 ``js
 $("#box").mutouch({
   onLongTap : function(longTapTime){
@@ -124,8 +140,11 @@ $("#box").mutouch({
   }
 });
 ``
+
 ####`onStart`如何判断是触摸还是鼠标事件？
+
 `onStart` 方法提供了一个原生参数 `event` ,可以如此判断: 
+
 ``js
 $("#box").mutouch({
   onStart : function(event){
@@ -147,6 +166,11 @@ $("#box").mutouch({
 - [ ] v2.0 分支版(增加多点操作手势)
 
 ##License
-**mutouch.js** is licensed under the GNU GENERAL PUBLIC LICENSE, Version 3. [View the license file](https://github.com/XiaoMuCOOL/mutouch/blob/master/LICENSE)
 
-Copyright © 2015 · 冰蓝科技 , Inc. All Rights Reserved · Powered by : **小牧COOL**
+**mutouch.js** is licensed under the GNU GENERAL PUBLIC LICENSE, Version 3. 
+
+[View the license file](https://github.com/XiaoMuCOOL/mutouch/blob/master/LICENSE)
+
+
+Copyright © 2015 · 冰蓝科技 , Inc. 
+All Rights Reserved · Powered by : **小牧COOL**
