@@ -1,47 +1,56 @@
+/*! mutouch 2015-08-21 18:04:10 
+ * 作者：小牧COOL 
+ * 版本：1.0.0 
+ * QQ群：206683621 
+ */
 (function($){
   $.fn.mutouch = function(options){
     var defaults = {    
       offsetX : 0,
       offsetY : 0,
       banRight : false,
-      toTop : function(init){
-        console.log("top");
+      onSwipeTop : function(typeLR){
+        //console.log("top");
       },
-      toDown : function(init){
-        console.log("down");
+      onSwipeDown : function(typeLR){
+        //console.log("down");
       },
-      toLeft : function(init){
-        console.log("left");
+      onSwipeLeft : function(typeTD){
+        //console.log("left");
       },
-      toRight : function(init){
-        console.log("right");
+      onSwipeRight : function(typeTD){
+        //console.log("right");
       },
-      onTag : function(init){
-        console.log(init.longTag + "tag"+init.tagNum);
+      onTap : function(tapNum){
+        //console.log(init.longTap + "tap"+init.tapNum);
       },
-      onLongTag : function(init){
-        console.log("longTag" + init.longTag);
+      onLongTap : function(longTap){
+        //console.log("longTap" + init.longTap);
       },
-      onStart : function(init,event){
-        console.log("onStart");
-        console.log(event);
+      onStart : function(event){
+        //console.log("onStart");
+        //console.log(event);
       },
-      onMove : function(init,event){
-        console.log("onMove" + event);
+      onMove : function(event){
+        //console.log("onMove" + event);
       },
-      onEnd : function(init,event){
-        console.log("onEnd");
-        console.log(event);
+      onEnd : function(event){
+        //console.log("onEnd");
+        //console.log(event);
       }
     };
     var $this = $(this);
     var opts = $.extend(defaults, options);
-    var init = {sx:0,sy:0,ex:0,ey:0,cx:0,cy:0,typeLR:"none",typeTD:"none",tagNum:0,longTag:1};
-    var tagTime = null;
-    var longTagTime = null;
+    var init = {sx:0,sy:0,ex:0,ey:0,cx:0,cy:0,typeLR:"none",typeTD:"none",tapNum:0,longTap:1};
+    var tapTime = null;
+    var longTapTime = null;
     var obj = $this[0];
     function _init (Event) {
+<<<<<<< HEAD
       Event.stopPropagation();  
+=======
+      Event.stopPropagation();
+>>>>>>> dev
       Event.preventDefault();
       var touchEvent = "ontouchend" in document?Event.originalEvent.touches[0]: Event;
       return touchEvent;
@@ -53,12 +62,12 @@
       init.ey = init.sy;
       init.typeLR = "none";
       init.typeTD = "none";
-      init.longTag = 0;
+      init.longTap = 0;
     }
     function _start (touchEvent) {
       _setInit(touchEvent);
-      longTagTime = setInterval(function(){
-        ++init.longTag;
+      longTapTime = setInterval(function(){
+        ++init.longTap;
       },50);
     }
     function _move (touchEvent){
@@ -78,50 +87,50 @@
       if (changeY > opts.offsetY){
         init.typeTD = "top";
       };
-      init.tagNum = -1;
-      init.longTag = 0;
+      init.tapNum = -1;
+      init.longTap = 0;
     }
     function _end (touchEvent){
       if(init.typeLR == "left"){
-        opts.toLeft(init);
+        opts.onSwipeLeft(init.typeTD);
       }
       if(init.typeLR == "right"){
-        opts.toRight(init);
+        opts.onSwipeRight(init.typeTD);
       }
       if(init.typeTD == "top"){
-        opts.toTop(init);
+        opts.onSwipeTop(init.typeLR);
       }
       if(init.typeTD == "down"){
-        opts.toDown(init);
+        opts.onSwipeDown(init.typeLR);
       }
-      clearInterval(longTagTime);
-      if(init.longTag > (750/50)){
-        opts.onLongTag(init);
+      clearInterval(longTapTime);
+      if(init.longTap > (750/50)){
+        opts.onLongTap(init.longTap);
       }else{
-        if(init.tagNum != -1){
-          clearTimeout(tagTime);
-          init.tagNum++;
-          tagTime = setTimeout(function(){
-            opts.onTag(init);
-            init.tagNum = 0;
+        if(init.tapNum != -1){
+          clearTimeout(tapTime);
+          init.tapNum++;
+          tapTime = setTimeout(function(){
+            opts.onTap(init.tapNum);
+            init.tapNum = 0;
           },750);
         }else{
-          init.tagNum = 0;
+          init.tapNum = 0;
         }
       }
     }
     $this.on("touchstart mousedown",function(event){
       _start(_init(event));
-      opts.onStart(init,event);
+      opts.onStart(event);
 
       $this.on("touchmove mousemove",function(event){
         _move(_init(event));
-        opts.onMove(init,event);
+        opts.onMove(event);
       });
     });
     $this.on("touchend mouseup",function(event){
       $this.off("touchmove mousemove");
-      opts.onEnd(init,event);
+      opts.onEnd(event);
       _end(_init(event));
     });
     
