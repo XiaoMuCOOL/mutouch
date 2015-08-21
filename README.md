@@ -17,17 +17,17 @@ MuTouch,简化触摸和鼠标事件,基于JQuery,实现手势操作。
 1. 所以现代浏览器(如chrome,firefox)
 2. Android 2.3 +
 3. IOS 7.0 +
-4. IE9 +
+4. IE9 + 
 
 ##Usage
 ###How to Use?
-mutouch.js基于JQuery,在其之前引用JQuery,HTML代码如:
+**mutouch.js**基于JQuery,在其之前引用JQuery,HTML代码如:
 ``html
-<script src="js/jquery.js" type="text/javascript"></script>
+<script src="dist/jquery.js" type="text/javascript"></script>
 <!-- 开发版本 -->
-<script src="js/jquery.mutouch.js" type="text/javascript"></script>
+<script src="dist/jquery.mutouch.js" type="text/javascript"></script>
 <!-- 线上版本 -->
-<script src="js/jquery.mutouch.min.js" type="text/javascript"></script>
+<script src="dist/jquery.mutouch.min.js" type="text/javascript"></script>
 ``
 
 你必须为你的HTML标签元素设置一个`id`或`class`,如:
@@ -38,7 +38,7 @@ mutouch.js基于JQuery,在其之前引用JQuery,HTML代码如:
 ``js
 $("#box").mutouch({
   offsetY : 50, //上下滑动超过50px才触发事件
-  toTop : function(){
+  onSwipeTop : function(){
     //上滑事件
     //do something ...
   }
@@ -48,15 +48,15 @@ That's it!就是如此简单O(∩_∩)O~
 
 ##Options
 ###Arguments
-mutouch只有三个参数:
+**mutouch.js**只有三个参数:
 key | default | description
 ----|---------|------------
-`banRight` | false | 是否禁用右键,手机端禁用长按选中 
+`banRight` | false | 是否禁用右键,手机端是否禁用长按选中 
 `offsetX` | 0 | 左右滑动偏移量,超过这个数字才会触发事件
 `offsetY` | 0 | 上下滑动偏移量
 
 ###Events
-mutouch有九个事件:
+**mutouch.js**有九个事件:
 event | arguments | notes
 ------|-----------|------------
 `onSwipeTop` | `"typeLR"` | 上滑事件(从下往上滑动)
@@ -69,13 +69,84 @@ event | arguments | notes
 `onMove` | `event` | 滑动事件
 `onEnd` | `event` | 滑动结束事件
 
-##版本功能
+###Tips
+####如何判断往右下滑动？
+`onSwipeRight` 方法提供了一个参数 `typeTD` ,可以判断往右滑动时是网上还是往下,代码如下: 
+``js
+$("#box").mutouch({
+  onSwipeRight : function(typeTD){
+    //右滑事件
+    //do something ...
+
+    if(typeTD == "top"){
+      //右上滑动
+      //do something ...
+    }
+
+    if(typeTD == "down"){
+      //右下滑动
+      //do something ...
+    }
+  }
+});
+``
+**其他同理,`typeLR`只可能为`"left"`,`"right"`,`"none"`.
+
+####如何判断 双击及更多轻触事件？
+`onTap` 方法提供了一个参数 `tapNum` ,可以获取到轻触次数,代码如下: 
+``js
+$("#box").mutouch({
+  onTap : function(tapNum){
+    if(tapNum == 1){
+      //单次轻触事件
+      //do something ...
+    }
+    if(tapNum == 2){
+      //双击事件
+      //do something ...
+    }
+    if(tapNum == 50){
+      //50次轻触事件
+      //do something ...
+    }
+  }
+});
+``
+####如何设置 长按事件触发时间？
+`onLongTap` 默认是750毫秒触发,但方法提供了一个参数 `longTapTime` ,长按50毫秒为1 `longTapTime`,so,可以如此设置: 
+``js
+$("#box").mutouch({
+  onLongTap : function(longTapTime){
+    if((longTapTime*50) > 3000){
+      //长按3秒以上事件
+      //do something ...
+    }
+  }
+});
+``
+####`onStart`如何判断是触摸还是鼠标事件？
+`onStart` 方法提供了一个原生参数 `event` ,可以如此判断: 
+``js
+$("#box").mutouch({
+  onStart : function(event){
+    var touchEvent = "ontouchend" in document?event.originalEvent.touches[0]: event;
+    //使用 touchEvent.pageX 获取x坐标
+  }
+});
+``
+
+##版本日志
 - [X] v0.1 增加触屏手势(上下左右滑动,单次触摸,连续两次触摸,N次触摸,长按,禁止右键菜单)
 - [X] v0.2 增加鼠标支持
 - [X] v0.3 性能优化
 - [X] v0.4 封装原始方法提供接口
 - [N] v0.5 增加上拉加载,下拉刷新(逻辑有问题,此插件不适合此功能,暂时放弃)
-- [ ] v0.6 增加文档说明
-- [ ] v1.0 正式版(单点触摸版)
+- [X] v0.6 增加文档说明
+- [X] v1.0 正式版(单点触摸版)
 - [ ] v1.1 增加触摸手势(字母C,J,L,M,N,O,S,U,V,W,Z和√,X)
 - [ ] v2.0 分支版(增加多点操作手势)
+
+##License
+**mutouch.js** is licensed under the GNU GENERAL PUBLIC LICENSE, Version 3. [View the license file](https://github.com/XiaoMuCOOL/mutouch/blob/master/LICENSE)
+
+Copyright © 2015 · 冰蓝科技 , Inc. All Rights Reserved · Powered by : **小牧COOL**
