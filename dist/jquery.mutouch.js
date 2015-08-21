@@ -1,3 +1,8 @@
+/*! mutouch 2015-08-21 18:04:10 
+ * 作者：小牧COOL 
+ * 版本：1.0.0 
+ * QQ群：206683621 
+ */
 (function($){
   $.fn.mutouch = function(options){
     var defaults = {    
