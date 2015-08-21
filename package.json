@@ -1,0 +1,54 @@
+{
+  "name": "mutemplate",
+  "description": "Mu通用模板:个人前端自动化模板,包含合并、压缩、发布等.",
+  "version": "0.0.1",
+  "author": {
+    "name": "小牧COOL",
+    "url": "http://weibo.com/xiaomucool",
+    "QQ":"895355044",
+    "QQGroup":"206683621"
+  },
+  "homepage": "www.weimob.com/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bingblue/mutemplate.git"
+  },
+  "bugs": {
+    "url": "https://github.com/bingblue/mutemplate/issues"
+  },
+  "licenses": [
+    {
+      "type": "GPL",
+      "url": "https://github.com/bingblue/mutemplate/blob/master/LICENSE"
+    }
+  ],
+  "keywords": [
+    "nodejs",
+    "clean",
+    "concat",
+    "copy",
+    "sass",
+    "uglify",
+    "watch",
+    "css",
+    "replace",
+    "imagemin",
+    "grunt",
+    "sass"
+  ],
+  "devDependencies": {
+    "grunt": "*",
+    "grunt-contrib-clean": "*",
+    "grunt-contrib-concat": "*",
+    "grunt-contrib-copy": "*",
+    "grunt-contrib-imagemin": "^0.9.4",
+    "grunt-contrib-sass": "*",
+    "grunt-contrib-uglify": "*",
+    "grunt-contrib-watch": "*",
+    "grunt-css": "*",
+    "grunt-replace": "*",
+    "grunt-usemin": "*",
+    "jpegtran-bin": "^3.0.1"
+  },
+  "readme": "ERROR: No README data found!"
+}
