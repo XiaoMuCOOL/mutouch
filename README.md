@@ -8,25 +8,27 @@ MuTouch,简化触摸和鼠标事件,基于JQuery,实现手势操作。
 
 **QQ群** ： 206683621
 
+**感谢** : 如果您觉得此插件好用,请点击右上角 `star` 支持我,谢谢~
+
 ##Getting Started
 ###下载
 - [JQuery](http://jquery.com/download/)
 - [mutouch](https://github.com/XiaoMuCOOL/mutouch)
 
 ###支持浏览器：
-1. 所以现代浏览器(如chrome,firefox)
+1. 所有现代浏览器(如chrome,firefox等)
 2. Android 2.3 +
 3. IOS 7.0 +
 4. IE9 + 
 
 ##Usage
 ###How to Use?
-**mutouch.js**基于JQuery,在其之前引用JQuery,HTML代码如下:
+**mutouch.js**基于JQuery,所以在其之前引用JQuery,HTML代码如下:
 
 ```html
-<script src="dist/jquery.js" type="text/javascript"></script>
+<script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
 <!-- 开发版本 -->
-<script src="dist/jquery.mutouch.js" type="text/javascript"></script>
+<script src="js/jquery.mutouch.js" type="text/javascript"></script>
 <!-- 线上版本 -->
 <script src="dist/jquery.mutouch.min.js" type="text/javascript"></script>
 ```
@@ -37,7 +39,7 @@ MuTouch,简化触摸和鼠标事件,基于JQuery,实现手势操作。
 <div id="box"></div>
 ```
 
-然后js代码如下:
+最后,调用js代码如下:
 
 ```js
 $("#box").mutouch({
@@ -102,7 +104,7 @@ $("#box").mutouch({
 });
 ```
 
-**其他同理,`typeLR`只可能为`"left"`,`"right"`,`"none"`.
+**注意:** 左上左上等其他同理,`typeLR`只可能为`"left"`,`"right"`,`"none"`.
 
 ####如何判断 双击及更多轻触事件？
 

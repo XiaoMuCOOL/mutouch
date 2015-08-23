@@ -7,7 +7,7 @@ module.exports = function(grunt) {
     },
     uglify : {
       options : {
-        banner : '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd HH:MM:ss") %> \n * 作者：<%= pkg.author.name %> \n * 版本：<%= pkg.version %> \n * QQ群：<%= pkg.author.QQGroup %> \n */'
+        banner : '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd HH:MM:ss") %> \n * 作者：<%= pkg.author.name %> \n * 版本：<%= pkg.version %> \n * QQ群：<%= pkg.author.QQGroup %> \n * 官网：<%= pkg.homepage %> \n */'
       },
       dist: {
         files: {

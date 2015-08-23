@@ -15,7 +15,8 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <link rel="shortcut icon" href="favicon.ico"/>
     <style type="text/css">
-      body{
+      body,html{
+        max-width: 100%;
         background: #1abc9c;
         color: #fff;
       }
@@ -69,19 +70,24 @@
     <div id="box" class="animated fadeInRight">请滑动我,点击我,观看效果！^_^</div>
   </body>
   <script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
-  <script src="dist/jquery.mutouch.min.js"></script>
+  <script src="js/jquery.mutouch.js"></script>
+  <!--<script src="dist/jquery.mutouch.min.js"></script>-->
   <script type="text/javascript">
   $(function(){
-    function _end(){
+    function _end(num){
+      var t = num * 1000;
       $("#box").removeClass();
-      setTimeout(function(){location.reload(false)},1500);
+      setTimeout(function(){
+        location.reload(false);
+        //$("#box").removeClass();
+      },t);
     }
     $("#box").mutouch({
       banRight :true,
       offsetX : 50,
       offsetY : 50,
       onSwipeTop : function(typeLR){
-        _end();
+        _end(1.5);
 
         if(typeLR=="left"){
           $("#box").addClass("animated rotateOutUpLeft");
@@ -92,7 +98,7 @@
         }
       },
       onSwipeDown : function(typeLR){
-        _end();
+        _end(1.5);
 
         if(typeLR=="left"){
           $("#box").addClass("animated rotateOutDownRight");
@@ -103,24 +109,23 @@
         }
       },
       onSwipeLeft : function(typeTD){
-        _end();
+        _end(1.5);
         $("#box").addClass("animated bounceOutLeft");
       },
       onSwipeRight : function(typeTD){
-        _end();
+        _end(1.5);
         $("#box").addClass("animated bounceOutRight");
       },
       onTap : function(tapNum){
-        $("#box").removeClass();
+        _end(tapNum);
         $("#box").addClass("animated infinite shake");
         $("#box").text("你点了我 "+tapNum+" 下！！我要晃 " +tapNum+ " 秒");
-        setTimeout(function(){location.reload(false)},tapNum*1000);
       },
       onLongTap : function(longTapTime){
-        $("#box").removeClass();
+        _end(1.5);
         $("#box").addClass("animated infinite tada");
         $("#box").text("你一直按着我"+(longTapTime*50/1000)+"秒,我都要窒息了！");
-        setTimeout(function(){location.reload(false)},1500);
+        alert(1)
       }
     });
   });

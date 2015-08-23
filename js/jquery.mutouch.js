@@ -1,7 +1,8 @@
-/*! mutouch 2015-08-21 18:04:10 
+/*! mutouch 2015-08-23 17:10:37 
  * 作者：小牧COOL 
- * 版本：1.0.0 
+ * 版本：1.0.1 
  * QQ群：206683621 
+ * 官网：https://github.com/XiaoMuCOOL/mutouch 
  */
 (function($){
   $.fn.mutouch = function(options){
@@ -44,13 +45,8 @@
     var init = {sx:0,sy:0,ex:0,ey:0,cx:0,cy:0,typeLR:"none",typeTD:"none",tapNum:0,longTap:1};
     var tapTime = null;
     var longTapTime = null;
-    var obj = $this[0];
     function _init (Event) {
-<<<<<<< HEAD
-      Event.stopPropagation();  
-=======
       Event.stopPropagation();
->>>>>>> dev
       Event.preventDefault();
       var touchEvent = "ontouchend" in document?Event.originalEvent.touches[0]: Event;
       return touchEvent;

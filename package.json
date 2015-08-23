@@ -1,7 +1,7 @@
 {
   "name": "mutouch",
   "description": "MuTouch,简化触摸和鼠标事件,基于JQuery,实现手势操作.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": {
     "name": "小牧COOL",
     "url": "http://weibo.com/xiaomucool",
