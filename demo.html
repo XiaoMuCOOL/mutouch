@@ -78,8 +78,9 @@
       var t = num * 1000;
       $("#box").removeClass();
       setTimeout(function(){
-        location.reload(false);
-        //$("#box").removeClass();
+        // location.reload(false);
+        $("#box").removeClass();
+        $("#box").text("请滑动我,点击我,观看效果！^_^");
       },t);
     }
     $("#box").mutouch({
@@ -125,7 +126,6 @@
         _end(1.5);
         $("#box").addClass("animated infinite tada");
         $("#box").text("你一直按着我"+(longTapTime*50/1000)+"秒,我都要窒息了！");
-        alert(1)
       }
     });
   });
