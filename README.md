@@ -6,7 +6,7 @@ MuTouch,简化触摸和鼠标事件,基于JQuery,实现手势操作。
 
 **QQ号** ： 895355044
 
-**QQ群** ： 206683621
+**QQ群** ： [215259343][1]
 
 **感谢** ： 如果您觉得此插件好用,请点击右上角 `star` 支持我,谢谢~
 
@@ -54,13 +54,13 @@ $("#box").mutouch({
 });
 ```
 
-That's it！就是如此简单O(∩_∩)O~
+**That's it！就是如此简单O(∩_∩)O~**
 
 ## Options
 
 ### Arguments
 
-**mutouch.js**只有三个参数:
+**mutouch.js** 只有三个参数:
 
 key | default | description
 ----|---------|------------
@@ -70,7 +70,7 @@ key | default | description
 
 ### Events
 
-**mutouch.js**有九个事件:
+**mutouch.js** 有九个事件:
 
 event | arguments | notes
 ------|-----------|------------
@@ -86,7 +86,7 @@ event | arguments | notes
 
 ### Tips
 
-#### 如何判断往右下滑动？
+#### 1.如何判断往右下滑动？
 
 `onSwipeRight` 方法提供了一个参数 `typeTD` ,可以判断往右滑动时是往上还是往下,代码如下: 
 
@@ -111,7 +111,7 @@ $("#box").mutouch({
 
 **注意:** 左上左下等其他同理,`typeLR`只可能为`"left"`,`"right"`,`"none"`.
 
-#### 如何判断 双击及更多轻触事件？
+#### 2.如何判断 双击及更多轻触事件？
 
 `onTap` 方法提供了一个参数 `tapNum` ,可以获取到轻触次数,代码如下: 
 
@@ -134,7 +134,7 @@ $("#box").mutouch({
 });
 ```
 
-#### 如何设置 长按事件触发时间？
+#### 3.如何设置 长按事件触发时间？
 
 `onLongTap` 方法默认是750毫秒触发,但该方法提供了一个参数 `longTapTime` ,长按50毫秒为1 `longTapTime`,so,可以如此设置: 
 
@@ -149,7 +149,7 @@ $("#box").mutouch({
 });
 ```
 
-#### `onStart`如何判断是触摸还是鼠标事件？
+#### 4.`onStart`如何判断是触摸还是鼠标事件？
 
 `onStart` 方法提供了一个原生参数 `event` ,可以如此判断: 
 
@@ -183,3 +183,5 @@ $("#box").mutouch({
 Copyright © 2018 · 滨清科技 , Inc. 
 
 All Rights Reserved · Powered by : **小牧COOL**
+
+[1]:https://jq.qq.com/?_wv=1027&k=5tyQDAd
