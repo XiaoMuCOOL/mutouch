@@ -1,6 +1,6 @@
 /*! mutouch 2015-08-23 17:10:37 
  * 作者：小牧COOL 
- * 版本：1.0.1 
+ * 版本：1.9.0 
  * QQ群：206683621 
  * 官网：https://github.com/XiaoMuCOOL/mutouch 
  */
@@ -10,6 +10,8 @@
       offsetX : 0,
       offsetY : 0,
       banRight : false,
+      dropUpDOM: '',
+      dropDownDOM: '',
       onSwipeTop : function(typeLR){
         //console.log("top");
       },
@@ -38,6 +40,14 @@
       onEnd : function(event){
         //console.log("onEnd");
         //console.log(event);
+      },
+      onDropUp : function(dom, event){
+        //console.log("onDropUp");
+        //console.log(dom);
+      },
+      onDropDown : function(dom, event){
+        //console.log("onDropDown");
+        //console.log(onDropDown);
       }
     };
     var $this = $(this);
@@ -115,6 +125,25 @@
         }
       }
     }
+    // 判断上拉加载下拉刷新
+    function _drop (){
+      var selfHeight = $this.height();
+      var scrollTop = $this.scrollTop();
+      var contentHeight = $this.get(0).scrollHeight || $(document).height();
+      if(scrollTop >= (contentHeight-selfHeight) && !opts.dom){
+        opts.dom = $(opts.dropUpDOM).appendTo($this);
+        opts.onDropUp();
+      }
+      if(scrollTop <= 0 && !opts.dom){
+        opts.dom = $(opts.dropDownDOM).prependTo($this);
+        opts.onDropDown();
+      }
+    }
+    opts.remove = function (){
+      if(opts.dom) opts.dom.remove();
+      opts.dom = null;
+    }
+    
     $this.on("touchstart mousedown",function(event){
       _start(_init(event));
       opts.onStart(event);
@@ -129,7 +158,11 @@
       opts.onEnd(event);
       _end(_init(event));
     });
-    
+
+    $this.on("scroll",function(event){
+      _drop();
+    });
+
     if(opts.banRight){
       function Click(){ 
         window.event.returnValue=false; 

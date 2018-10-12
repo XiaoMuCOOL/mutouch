@@ -56,18 +56,53 @@
           width: 96%;
         }
       }
+      .news{
+        padding: 0;
+        margin: 0 auto;
+        width: 100%;
+        max-width: 500px;
+        height: 300px;
+        overflow: auto;
+        background: #fff;
+        border: 1px solid #eee;
+      }
+      .news li{
+        display: block;
+        width: 100%;
+        height: 50px;
+        line-height: 50px;
+        font-size: 18px;
+        color: #999;
+        text-align: center;
+        border-bottom: 1px solid #eee;
+      }
+      .news li:nth-last-child(){
+        border-bottom: 0px solid #eee;
+      }
     </style>
   </head>
   <body>
     <h1 class="animated fadeInLeft">欢迎使用 mutouch.js</h1>
     <h2 class="animated fadeInLeft">
       “我相信你一定很有眼光!” --作者:
-      <a href="http://weibo.com/1601228462" title="QQ:895355044">小牧COOL</a>
+      <a href="https://github.com/xiaomucool" title="QQ:895355044">小牧COOL</a>
     </h2>
     <h2>QQ：895355044
 　　
-        QQ群 ： 206683621</h2>
+        QQ群 ： 215259343</h2>
     <div id="box" class="animated fadeInRight">请滑动我,点击我,观看效果！^_^</div>
+
+    <ul class="news">
+      <li>我是Item1</li>
+      <li>我是Item2</li>
+      <li>我是Item3</li>
+      <li>我是Item4</li>
+      <li>我是Item6</li>
+      <li>我是Item7</li>
+      <li>我是Item8</li>
+      <li>我是Item9</li>
+      <li>我是Item10</li>
+    </ul>
   </body>
   <script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
   <script src="js/jquery.mutouch.js"></script>
@@ -128,6 +163,34 @@
         $("#box").text("你一直按着我"+(longTapTime*50/1000)+"秒,我都要窒息了！");
       }
     });
+
+    $(".news").mutouch({
+      dropDownDOM: '<li>下拉刷新中...</li>',
+      dropUpDOM: '<li>上拉加载中...</li>',
+      onDropDown: function(){
+        var $this = this
+        setTimeout(function(){
+          $this.remove()
+        },1000)
+      },
+      onDropUp: function(){
+        var $this = this
+        setTimeout(function(){
+          $this.remove()
+        },1000)
+      }
+    });
+    // $(window).mutouch({
+    //   offsetY: 50,
+    //   DropDownDom: '<li>下拉刷新中...</li>',
+    //   DropUpDom: '<li>上拉加载中...</li>',
+    //   onDropDownDom: function(dom){
+    //     console.log(dom)
+    //   },
+    //   onDropUpDom: function(dom){
+    //     console.log(dom)
+    //   }
+    // });
   });
   </script>
 </html>
