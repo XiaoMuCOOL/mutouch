@@ -1,12 +1,15 @@
 {
   "name": "mutouch",
   "description": "MuTouch,简化触摸和鼠标事件,基于JQuery,实现手势操作.",
-  "version": "1.0.1",
+  "version": "1.0.2",
+  "scripts": {
+    "start": "grunt"
+  },
   "author": {
     "name": "小牧COOL",
     "url": "http://weibo.com/xiaomucool",
-    "QQ":"895355044",
-    "QQGroup":"206683621"
+    "QQ": "895355044",
+    "QQGroup": "206683621"
   },
   "homepage": "https://github.com/XiaoMuCOOL/mutouch",
   "repository": {

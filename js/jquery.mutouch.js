@@ -1,12 +1,13 @@
 /*! mutouch 2015-08-23 17:10:37 
  * 作者：小牧COOL 
- * 版本：1.0.1 
+ * 版本：1.0.2 
  * QQ群：206683621 
  * 官网：https://github.com/XiaoMuCOOL/mutouch 
  */
 (function($){
   $.fn.mutouch = function(options){
-    var defaults = {    
+    var defaults = {
+      $this: null,
       offsetX : 0,
       offsetY : 0,
       banRight : false,
@@ -126,6 +127,7 @@
     });
     $this.on("touchend mouseup",function(event){
       $this.off("touchmove mousemove");
+      opts.$this = $(this);
       opts.onEnd(event);
       _end(_init(event));
     });
